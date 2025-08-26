@@ -24,7 +24,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row gap-8 w-5/6 max-w-5xl">
           <div className="bg-gradient-to-br from-purple-200 via-white to-purple-100 shadow-2xl rounded-3xl p-6 flex-1 hover:scale-105 transition-transform">
             <img src="/woppss.jpg" alt="Foto Profil" className="rounded-full mx-auto border-4 border-pink-400 shadow-lg w-36 h-36 object-cover"/>
-            <h2 className="text-3xl font-bold mt-4 text-pink-600 text-center">🌸 lenoo naaa 🌸</h2>
+            <h2 className="text-3xl font-bold mt-4 text-pink-600 text-center">🌸 ALENNOOO NAA 🌸</h2>
             <div className="mt-4 space-y-2 text-left text-gray-700 text-base font-medium">
               <p>🌸 Nama: ALENA ALENN</p>
               <p>🏫 Sekolah: SMK NEGRI 8 MALANG</p>
@@ -67,30 +67,47 @@ export default function Home() {
       </section>
 
       {/* ROBOTIC */}
-      <section className="w-full flex flex-col items-center justify-center bg-blue-100 px-6 py-10">
+      <section className="w-full flex flex-col items-center justify-center bg-blue-50 px-6 py-10">
         <h2 className="text-3xl font-extrabold text-blue-800 mb-10 text-center">Ekskul Robotic 🤖</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-4xl">
 
-          <div className="flex flex-col items-center gap-4">
-            <div className="p-3 rounded-2xl bg-gradient-to-r from-blue-300 via-white to-blue-400 shadow-xl">
-              <img src="/panel.jpg" alt="Panel" className="rounded-2xl w-full h-[200px] object-cover"/>
+        {/* GRID FOTO + KETERANGAN */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+          {/* Panel */}
+          <div className="bg-white rounded-2xl shadow-lg border border-blue-200 overflow-hidden hover:shadow-xl transition">
+            <img src="/panel.jpg" alt="Panel" className="w-full h-[200px] object-cover"/>
+            <div className="p-4 text-center">
+              <p className="text-blue-900 text-base">
+                <b>Panel:</b> Papan kontrol robot berisi tombol, saklar, dan indikator
+                untuk mengendalikan robot secara langsung. Membantu memahami rangkaian
+                listrik & logika pengendalian.
+              </p>
             </div>
-            <p className="text-center text-blue-900 text-base max-w-sm">
-              <b>Panel:</b> Papan kontrol robot berisi tombol, saklar, dan indikator untuk mengendalikan robot secara langsung. Membantu memahami rangkaian listrik & logika pengendalian.
-            </p>
           </div>
 
-          <div className="flex flex-col items-center gap-4">
-            <div className="p-3 rounded-2xl bg-gradient-to-r from-blue-300 via-white to-blue-400 shadow-xl">
-              <img src="/gtau.jpg" alt="Trainer PLC" className="rounded-2xl w-full h-[200px] object-cover"/>
+          {/* Trainer PLC */}
+          <div className="bg-white rounded-2xl shadow-lg border border-blue-200 overflow-hidden hover:shadow-xl transition">
+            <img src="/gtau.jpg" alt="Trainer PLC" className="w-full h-[200px] object-cover"/>
+            <div className="p-4 text-center">
+              <p className="text-blue-900 text-base">
+                <b>Trainer PLC:</b> Alat latihan pemrograman PLC untuk mengendalikan
+                robot/mesin industri. Melatih logika, sensor, & kontrol otomatisasi.
+              </p>
             </div>
-            <p className="text-center text-blue-900 text-base max-w-sm">
-              <b>Trainer PLC:</b> Alat latihan pemrograman PLC untuk mengendalikan robot/mesin industri. Melatih logika, sensor, & kontrol otomatisasi.
-            </p>
           </div>
 
+          {/* Robot Baru */}
+          <div className="bg-white rounded-2xl shadow-lg border border-blue-200 overflow-hidden hover:shadow-xl transition">
+            <img src="/uji.jpg" alt="Robot Baru" className="w-full h-[200px] object-cover"/>
+            <div className="p-4 text-center">
+              <p className="text-blue-900 text-base">
+                <b>Robot Mobile Uji Coba:</b> Robot pintar yang mengikuti garis menggunakan sensor.  
+                Melatih logika pemrograman, sensorik, dan strategi algoritma.
+              </p>
+            </div>
+          </div>
         </div>
 
+        {/* TOMBOL INFO */}
         <RobotInfo />
       </section>
 
@@ -125,16 +142,31 @@ export default function Home() {
   );
 }
 
+// ROBOTIC INFO (animasi tanpa framer-motion)
 function RobotInfo() {
   const [showInfo, setShowInfo] = useState(false);
+
   return (
-    <div className="mt-4 flex flex-col items-center gap-2 max-w-xl text-center">
-      <button onClick={() => setShowInfo(!showInfo)} className="bg-blue-500 text-white py-2 px-4 rounded-xl hover:bg-blue-600 transition-colors">ROBOTIC TUH APASIHH GAISS???</button>
-      {showInfo && (
-        <p className="mt-2 text-blue-900 text-base leading-relaxed">
-          Robotic adalah ilmu dan teknologi untuk merancang, membuat, dan mengendalikan robot. Di ekskul ini kita belajar pemrograman, elektronika, sensor, serta kreativitas membangun robot. Ekskul ini juga melatih <b>problem solving</b>, kerja sama tim, dan inovasi.
+    <div className="mt-6 flex flex-col items-center gap-4 max-w-xl text-center">
+      <button
+        onClick={() => setShowInfo(!showInfo)}
+        className="bg-blue-500 text-white py-2 px-6 rounded-xl hover:bg-blue-600 transition-transform hover:scale-105"
+      >
+        ROBOTIC TUH APASIHH GAISS???
+      </button>
+
+      <div
+        className={`overflow-hidden transition-all duration-500 ease-in-out ${
+          showInfo ? "max-h-96 opacity-100 mt-2 p-6" : "max-h-0 opacity-0 p-0"
+        } bg-white rounded-2xl shadow-xl border border-blue-200`}
+      >
+        <p className="text-blue-900 text-base leading-relaxed">
+          Robotic adalah ilmu dan teknologi untuk merancang, membuat, dan
+          mengendalikan robot. Di ekskul ini kita belajar pemrograman,
+          elektronika, sensor, serta kreativitas membangun robot. Ekskul ini
+          juga melatih <b>problem solving</b>, kerja sama tim, dan inovasi.
         </p>
-      )}
+      </div>
     </div>
   );
 }
